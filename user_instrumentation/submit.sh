@@ -7,8 +7,7 @@
 #SBATCH -e user_instrumentation_example.err
 #SBATCH -p test
 
-export FLAVOUR_NOCONFLICT=1
-module load gcc oneapi intelmpi itac
+module load oneapi intelmpi itac
 
 mpiicpc -I/apps/developers/tools/itac/2021.4/1/default/itac/2021.4.0/include -L/apps/developers/tools/itac/2021.4/1/default/itac/2021.4.0/slib -lVTnull itac_test.cpp -o itac_test
 

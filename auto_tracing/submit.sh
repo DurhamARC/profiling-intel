@@ -7,8 +7,7 @@
 #SBATCH -e itac_example.err
 #SBATCH -p test
 
-export FLAVOUR_NOCONFLICT=1
-module load gcc oneapi intelmpi itac
+module load oneapi intelmpi itac
 
 mpiicpc itac_test.cpp -o itac_test
 
