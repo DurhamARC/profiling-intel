@@ -23,27 +23,21 @@ void trace_out(const std::string &trace) {
   VT_end(itac_handles[trace]);
 }
 
-void do_fancy_physics(const int rank) {
+void do_fancy_physics() {
   float aggregator = 0;
   for (int i = 0; i < 100'000'000; ++i) {
     aggregator += sin(i);
   }
-  std::cout << "Result on " << rank << ": " << aggregator << std::endl;
+  std::cout << "Result: " << aggregator << std::endl;
 }
 
 int main(int argc, char *argv[]) {
-  MPI_Init(&argc, &argv);
-  int rank;
-  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-
   const std::array<std::string, 3> phases{"alpha", "beta", "gamma"};
   for (const auto &phase : phases) {
     trace_in(phase);
-    do_fancy_physics(rank);
+    do_fancy_physics();
     trace_out(phase);
   }
-
-  MPI_Finalize();
   return 0;
 }
 
