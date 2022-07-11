@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=0:02:0
 #SBATCH --ntasks=2
-#SBATCH -partition test
+#SBATCH --partition test
 
 module load oneapi intelmpi itac
 
